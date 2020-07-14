@@ -1,11 +1,11 @@
-function [nextPoint, gradient] = step(data, start, slope, stepLength, radius, gamma)
+function [nextPoint, gradient] = step(gradFunction, data, start, slope, stepLength, radius, gamma)
 	origStepLength = stepLength;
 	count = 0;
 	
 	slopeSign = slope/abs(slope);
 	
 	do
-		gradient = grad(data, start, radius);
+		gradient = gradFunction(data, start, radius);
 		
 		if sqrt(gradient(1)^2 + gradient(2)^2) < abs(slope)
 			direction = [-slopeSign*gamma*gradient(1) -slopeSign*gamma*gradient(2) slope/abs(slope)*gradient(3)]

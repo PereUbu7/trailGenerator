@@ -73,7 +73,7 @@ currentPoint = start;
 for i = 1:1000
 	track(i, :) = currentPoint;
 	
-	[nextPoint, gradient] = step(filterData, currentPoint, trackSlope, stepLength, radius, direction);
+	[nextPoint, gradient] = step(@grad, filterData, currentPoint, trackSlope, stepLength, radius, direction);
 	figure(1);
 	plot([currentPoint(1) nextPoint(1)], [currentPoint(2) nextPoint(2)], 'linewidth', 3, color);
 	figure(4);
